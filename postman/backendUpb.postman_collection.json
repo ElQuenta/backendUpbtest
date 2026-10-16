@@ -25,6 +25,13 @@
       }
     },
     {
+      "name": "Listar nombres y precios",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/productos/precios", "host": ["{{baseUrl}}"], "path": ["api", "productos", "precios"] }
+      }
+    },
+    {
       "name": "Buscar productos por nombre",
       "request": {
         "method": "GET",

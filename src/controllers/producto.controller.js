@@ -9,6 +9,11 @@ const listar = async (req, res) => {
     res.json(productos.map(productoResponseDto));
 };
 
+const listarNombresYPrecios = async (req, res) => {
+    const productos = await productoService.listarNombresYPrecios();
+    res.json(productos);
+};
+
 const obtener = async (req, res) => {
     const producto = await productoService.obtenerPorId(req.params.id);
     res.json(productoResponseDto(producto));
@@ -31,4 +36,4 @@ const eliminar = async (req, res) => {
     res.status(204).send();
 };
 
-module.exports = { listar, obtener, crear, actualizar, eliminar };
+module.exports = { listar, listarNombresYPrecios, obtener, crear, actualizar, eliminar };
