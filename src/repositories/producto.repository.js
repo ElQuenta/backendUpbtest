@@ -14,6 +14,16 @@ const findByNombre = async (nombre) => {
     return rows.map(Producto.fromRow);
 };
 
+const findNombresYPrecios = async () => {
+    const { rows } = await pool.query(
+        'SELECT nombre, precio FROM productos ORDER BY id'
+    );
+    return rows.map(({ nombre, precio }) => ({
+        nombre,
+        precio: Number(precio),
+    }));
+};
+
 const findById = async (id) => {
     const { rows } = await pool.query('SELECT * FROM productos WHERE id = $1', [id]);
     return Producto.fromRow(rows[0]);
@@ -45,4 +55,4 @@ const remove = async (id) => {
     return rowCount > 0;
 };
 
-module.exports = { findAll, findByNombre, findById, create, update, remove };
+module.exports = { findAll, findByNombre, findNombresYPrecios, findById, create, update, remove };
